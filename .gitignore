@@ -1,0 +1,38 @@
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 编辑器文件
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# 日志文件
+*.log
+logs/
+error_log
+access_log
+
+# 缓存文件
+*.cache
+cache/
+temp/
+
+# 配置文件
+config.php
+.env
+
+# 上传文件
+uploads/
+assets/uploads/
+
+# 数据库文件
+*.sql
+*.sqlite
+
+# 其他
+*.bak
+*.swp
+*.swo
+*~ 

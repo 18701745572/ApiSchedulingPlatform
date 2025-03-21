@@ -1,0 +1,8 @@
+台州驿宣网络  www.tzyx.site
+
+测试环境：Nginx + PHP7.0 + MySQL5.6
+
+数据库配置文件修改路径：/includes/config.php
+
+后台登录地址：http://你的域名/admin
+后台账号密码：admin/123456

@@ -1,0 +1,13 @@
+.layui-btn{color:#fff !important;}
+.jiekou-on{color:#009688;}
+.jiekou-off{color:#f00;}
+.current{background: #ff5149 !important;}
+a.page-numbers:hover{color: #00ffd2;}
+.page-numbers {border-radius:4px;padding:2px 5px;margin:5px 3px;font-size:16px;background: #009688;color: #fff;}
+.layui-card{border-radius:10px;width:49%;display:inline-grid;margin-right:4px;}
+@media screen and (max-width: 630px){.layui-card{width:100%;}}
+@media screen and (max-width: 406px){.layui-btn{color:#fff !important;width:45%;padding:0;margin-right:4px !important;}}
+.layui-card-header{padding: 0 0 0 15px !important;}
+#LAY-component-grid-stack .layui-card-body{display: flex; justify-content: center; flex-direction: column; text-align: center; height: 200px;}
+.inter{color: #009688;font-weight: 600;}
+.page-cur{background: none !important;color: #009688;border: 1px solid #009688;width: 16px;display: inline-block;}

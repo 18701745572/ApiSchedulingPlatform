@@ -1,0 +1,93 @@
+<?php 
+include '../includes/comment.php';
+include '../Comment.php';
+if($start['status']==1){}else exit("<script language='javascript'>window.location.href='./login.php';</script>");
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>修改密码</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="stylesheet" href="../assets/layuiadmin/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="css/layui-mini.css" media="all">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="../assets/layuiadmin/style/admin.css" media="all">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2827587_e7db1paq2rd.css" media="all">
+<link rel="stylesheet" href="css/public.css" media="all">
+<script src="//at.alicdn.com/t/font_2827587_e7db1paq2rd.js"></script>
+<?echo $ver_config['css'];?>
+<style>
+    .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
+</style>
+</head>
+<body marginwidth="0" marginheight="0">
+<div class="layuimini-container">
+    <div class="layui-card-header"><i class="fa fa-edit"></i> 修改密码</div>
+    <div class="layuimini-main">
+        <div class="layui-form layuimini-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label required">旧的密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="old_password" id="old_password" lay-verify="required" lay-reqtext="旧的密码不能为空" placeholder="请输入旧的密码" value="" class="layui-input">
+                    <tip>填写自己账号的旧的密码。</tip>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label required">新的密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="new_password" id="new_password" lay-verify="required" lay-reqtext="新的密码不能为空" placeholder="请输入新的密码" value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">确认密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="again_password" id="again_password" lay-verify="required" lay-reqtext="新的密码不能为空" placeholder="请输入新的密码" value="" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" onclick="ChangeOrder()" lay-filter="saveBtn">确认保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/layui.all.js"></script>
+<script>
+function ChangeOrder() {
+	var old=$("#old_password").val();
+	var newP=$("#new_password").val();
+	var again=$("#again_password").val();
+	if(old==''){layer.alert('请输入旧的密码');return false;}
+	if(newP==''){layer.alert('请输入新的密码');return false;}
+	if(again==''){layer.alert('跟新的密码不一样');return false;}
+	var dd = layer.load(1, {shade:[0.1,'#fff']});
+	$.ajax({
+		type : "POST",
+		url : "ajax.php?change",
+		data : {"old":old,"newP":newP,"again":again},
+		dataType : "json",
+		success : function(data) {
+			layer.close(dd);
+			if(data.code == 0){
+				layer.msg(data.msg);
+				setTimeout(function(){window.parent.location.reload();},800);
+			}else{
+				layer.msg(data.msg);
+			}
+		},
+		error : function(data) {
+		    layer.close(dd);
+            layer.msg('数据返回失败 ');
+        }
+	});
+};
+</script>
+</body>
+</html>
